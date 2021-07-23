@@ -68,6 +68,7 @@ class FamaFrench:
         X['SMB']=p['SMB']
         X['HML']=p['HML']
         Y=p['Close']
+        Y=Y.pct_change().fillna(0)*100
         X=sm.add_constant(X)
         model = sm.OLS(Y.astype(float), X.astype(float)).fit()
         predictions = model.predict(X)
@@ -83,6 +84,7 @@ class FamaFrench:
         X['SMB']=p['SMB']
         X['HML']=p['HML']
         Y=p['Close']
+        Y=Y.pct_change().fillna(0)*100
         X=sm.add_constant(X)
         model = sm.OLS(Y.astype(float), X.astype(float)).fit()
         predictions = model.predict(X)
